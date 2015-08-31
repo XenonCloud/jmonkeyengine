@@ -42,8 +42,10 @@ import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.util.Animator;
 import com.jogamp.opengl.util.AnimatorBase;
 import com.jogamp.opengl.util.FPSAnimator;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Logger;
+
 import com.jogamp.opengl.DebugGL2;
 import com.jogamp.opengl.DebugGL3;
 import com.jogamp.opengl.DebugGL3bc;
@@ -51,6 +53,7 @@ import com.jogamp.opengl.DebugGL4;
 import com.jogamp.opengl.DebugGL4bc;
 import com.jogamp.opengl.DebugGLES1;
 import com.jogamp.opengl.DebugGLES2;
+import com.jogamp.opengl.DebugGLES3;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLCapabilities;
@@ -103,8 +106,12 @@ public abstract class JoglNewtAbstractDisplay extends JoglContext implements GLE
         canvas.requestFocus();
         canvas.setSize(settings.getWidth(), settings.getHeight());
         canvas.addGLEventListener(this);
+        
+        //FIXME not sure it is the best place to do that
+        renderable.set(true);
 
-        if (settings.getBoolean("GraphicsDebug")) {
+        //TODO remove this block once for all when the unified renderer is stable
+        /*if (settings.getBoolean("GraphicsDebug")) {
             canvas.invoke(false, new GLRunnable() {
                 public boolean run(GLAutoDrawable glad) {
                     GL gl = glad.getGL();
@@ -115,7 +122,9 @@ public abstract class JoglNewtAbstractDisplay extends JoglContext implements GLE
                             if (gl.isGLES2()) {
                                 glad.setGL(new DebugGLES2(gl.getGLES2()));
                             } else {
-                                // TODO ES3
+                            	if (gl.isGLES3()) {
+                                	glad.setGL(new DebugGLES3(gl.getGLES3()));
+                                }
                             }
                         }
                     } else {
@@ -146,7 +155,12 @@ public abstract class JoglNewtAbstractDisplay extends JoglContext implements GLE
         
         renderer = new JoglRenderer();
         
-        renderer.setMainFrameBufferSrgb(settings.getGammaCorrection());
+        canvas.invoke(false, new GLRunnable() {
+            public boolean run(GLAutoDrawable glad) {
+                renderer.setMainFrameBufferSrgb(settings.getGammaCorrection());
+                return true;
+            }
+        });*/
     }
 
     protected void startGLCanvas() {
@@ -161,9 +175,6 @@ public abstract class JoglNewtAbstractDisplay extends JoglContext implements GLE
 
         animator.start();
         wasAnimating = true;
-        
-        //FIXME not sure it is the best place to do that
-        renderable.set(true);
     }
 
     protected void onCanvasAdded() {
