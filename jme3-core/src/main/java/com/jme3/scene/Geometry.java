@@ -562,12 +562,15 @@ public class Geometry extends Spatial {
         if (matName != null) {
             // Material name is set,
             // Attempt to load material via J3M
-            try {
-                material = im.getAssetManager().loadMaterial(matName);
-            } catch (AssetNotFoundException ex) {
-                // Cannot find J3M file.
-                logger.log(Level.FINE, "Cannot locate {0} for geometry {1}", new Object[]{matName, key});
+            if(matName.contains(".")){
+                try {
+                    material = im.getAssetManager().loadMaterial(matName);
+                } catch (AssetNotFoundException ex) {
+                    // Cannot find J3M file.
+                    logger.log(Level.FINE, "Cannot locate {0} for geometry {1}", new Object[]{matName, key});
+                }
             }
+            
         }
         // If material is NULL, try to load it from the geometry
         if (material == null) {

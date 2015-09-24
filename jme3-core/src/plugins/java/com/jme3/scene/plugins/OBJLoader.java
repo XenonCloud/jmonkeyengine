@@ -69,9 +69,9 @@ public final class OBJLoader implements AssetLoader {
     
     protected final ArrayList<Face> faces = new ArrayList<Face>();
     protected final HashMap<String, ArrayList<Face>> matFaces = new HashMap<String, ArrayList<Face>>();
+    protected final ArrayList<String> objectNames = new ArrayList<String>();
     
     protected String currentMatName;
-    protected String currentObjectName;
 
     protected final HashMap<Vertex, Integer> vertIndexMap = new HashMap<Vertex, Integer>(100);
     protected final IntMap<Vertex> indexVertMap = new IntMap<Vertex>(100);
@@ -389,6 +389,8 @@ public final class OBJLoader implements AssetLoader {
             loadMtlLib(mtllib);
         }else if (cmd.equals("s") || cmd.equals("g")){
             return nextStatement();
+        }else if (cmd.equals("o")){
+            objectNames.add(scan.next());
         }else{
             // skip entire command until next line
             logger.log(Level.WARNING, "Unknown statement in OBJ! {0}", cmd);
@@ -398,14 +400,14 @@ public final class OBJLoader implements AssetLoader {
         return true;
     }
 
-    protected Geometry createGeometry(ArrayList<Face> faceList, String matName) throws IOException{
+    protected Geometry createGeometry(ArrayList<Face> faceList, String matName , String objectName) throws IOException{
         if (faceList.isEmpty())
             throw new IOException("No geometry data to generate mesh");
 
         // Create mesh from the faces
         Mesh mesh = constructMesh(faceList);
         
-        Geometry geom = new Geometry(objName + "-geom-" + (geomIndex++), mesh);
+        Geometry geom = new Geometry(objectName, mesh);
         
         Material material = null;
         if (matName != null && matList != null){
@@ -582,17 +584,18 @@ public final class OBJLoader implements AssetLoader {
             }
         }
         
+        int idx = 0;
         if (matFaces.size() > 0){
             for (Entry<String, ArrayList<Face>> entry : matFaces.entrySet()){
                 ArrayList<Face> materialFaces = entry.getValue();
                 if (materialFaces.size() > 0){
-                    Geometry geom = createGeometry(materialFaces, entry.getKey());
+                    Geometry geom = createGeometry(materialFaces, entry.getKey() , objectNames.get(idx++));
                     objNode.attachChild(geom);
                 }
             }
         }else if (faces.size() > 0){
             // generate final geometry
-            Geometry geom = createGeometry(faces, null);
+            Geometry geom = createGeometry(faces, null , objectNames.get(idx));
             objNode.attachChild(geom);
         }
 

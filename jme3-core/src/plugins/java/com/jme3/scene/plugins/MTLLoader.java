@@ -123,9 +123,9 @@ public class MTLLoader implements AssetLoader {
     protected void createMaterial(){
         Material material;
         
-        if (alpha < 1f && transparent){
-            diffuse.a = alpha;
-        }
+//        if (alpha < 1f && transparent){
+//            diffuse.a = alpha;
+//        }
         
         if (shadeless){
             material = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
@@ -149,10 +149,14 @@ public class MTLLoader implements AssetLoader {
         if (transparent){
             material.setTransparent(true);
             material.getAdditionalRenderState().setBlendMode(BlendMode.Alpha);
-            material.getAdditionalRenderState().setAlphaTest(true);
-            material.getAdditionalRenderState().setAlphaFallOff(0.01f);
+            if(shadeless){
+                material.getAdditionalRenderState().setAlphaTest(true);
+                material.getAdditionalRenderState().setAlphaFallOff(0.01f);
+            }else{
+                material.setFloat("AlphaDiscardThreshold", 0.01f);
+            }
         }
-        
+        material.setName(matName);
         matList.put(matName, material);
     }
 
@@ -168,23 +172,23 @@ public class MTLLoader implements AssetLoader {
     }
     
     protected Texture loadTexture(String path){
-        String[] split = path.trim().split("\\p{javaWhitespace}+");
+//        String[] split = path.trim().split("\\p{javaWhitespace}+");
         
         // will crash if path is an empty string
-        path = split[split.length-1];
+//        path = split[split.length-1];
         
-        String name = new File(path).getName();
-        TextureKey texKey = new TextureKey(folderName + name);
+        String name = new File( path.trim()).getName();
+        TextureKey texKey = new TextureKey(folderName + path.trim());
         texKey.setGenerateMips(true);
         Texture texture;
         try {
             texture = assetManager.loadTexture(texKey);
             texture.setWrap(WrapMode.Repeat);
         } catch (AssetNotFoundException ex){
-            logger.log(Level.WARNING, "Cannot locate {0} for material {1}", new Object[]{texKey, key});
+            logger.log(Level.WARNING, "Cannot locate {0} for material {1} from {2}", new Object[]{texKey, key , path});
             texture = new Texture2D(PlaceholderAssets.getPlaceholderImage(assetManager));
             texture.setWrap(WrapMode.Repeat);
-            texture.setKey(key);
+            texture.setKey(texKey);
         }
         return texture;
     }
@@ -248,7 +252,7 @@ public class MTLLoader implements AssetLoader {
             }
         }else if (cmd.equals("map_d")){
             String path = scan.next();
-            alphaMap = loadTexture(path);
+//            alphaMap = loadTexture(path);
             transparent = true;
         }else if (cmd.equals("illum")){
             int mode = scan.nextInt();

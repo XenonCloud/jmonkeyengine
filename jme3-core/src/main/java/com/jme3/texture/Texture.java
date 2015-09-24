@@ -616,7 +616,7 @@ public abstract class Texture implements CloneableSmartAsset, Savable, Cloneable
                 Texture loadedTex = e.getAssetManager().loadTexture(key);
                 image = loadedTex.getImage();
             } catch (AssetNotFoundException ex){
-                Logger.getLogger(Texture.class.getName()).log(Level.SEVERE, "Cannot locate texture {0}", key);
+                Logger.getLogger(Texture.class.getName()).log(Level.SEVERE, "Cannot locate texture {0} from {1}", new Object[] {key , key.getFolder()});
                 image = PlaceholderAssets.getPlaceholderImage(e.getAssetManager());
             }
         }else{
