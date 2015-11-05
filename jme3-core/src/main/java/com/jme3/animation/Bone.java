@@ -630,7 +630,7 @@ public final class Bone implements Savable {
      * Attach models and effects to this node to make
      * them follow this bone's motions.
      */
-    Node getAttachmentsNode() {
+    public Node getAttachmentsNode() {
         if (attachNode == null) {
             attachNode = new Node(name + "_attachnode");
             attachNode.setUserData("AttachedBone", this);
@@ -642,7 +642,7 @@ public final class Bone implements Savable {
      * Used internally after model cloning.
      * @param attachNode
      */
-    void setAttachmentsNode(Node attachNode) {
+    public void setAttachmentsNode(Node attachNode) {
         this.attachNode = attachNode;
     }
 

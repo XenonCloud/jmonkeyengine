@@ -1,0 +1,25 @@
+-Xdoclint:none '-quiet'
+-author 
+-classpath 'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\build\\classes\\main;C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\build\\resources\\main;C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-core\\build\\libs\\jme3-core-3.1.0-SNAPSHOT.jar;C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-desktop\\build\\libs\\jme3-desktop-3.1.0-SNAPSHOT.jar;C:\\Users\\matthias\\.gradle\\caches\\modules-2\\files-2.1\\org.lwjgl\\lwjgl\\3.0.0a\\788064e90fc99d6202b89c487ac525cb336a8dd3\\lwjgl-3.0.0a.jar;C:\\Users\\matthias\\.gradle\\caches\\modules-2\\files-2.1\\org.lwjgl\\lwjgl-platform\\3.0.0a\\4d92e1b7c9c3077209a8cb2531cd803837b685d5\\lwjgl-platform-3.0.0a-natives-windows.jar;C:\\Users\\matthias\\.gradle\\caches\\modules-2\\files-2.1\\org.lwjgl\\lwjgl-platform\\3.0.0a\\23d98c0b5a1ca12726d47fe8cccaf323d2ba30a9\\lwjgl-platform-3.0.0a-natives-linux.jar;C:\\Users\\matthias\\.gradle\\caches\\modules-2\\files-2.1\\org.lwjgl\\lwjgl-platform\\3.0.0a\\85281dee834fb29b530148f354b704699e03c5b7\\lwjgl-platform-3.0.0a-natives-osx.jar'
+-d 'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\build\\docs\\javadoc'
+-doctitle 'jMonkeyEngine 3.1 jme3-lwjgl3 Javadoc'
+-header '<b>jMonkeyEngine 3.1 jme3-lwjgl3</b>'
+-protected 
+-quiet 
+-use 
+-windowtitle 'jMonkeyEngine 3.1 jme3-lwjgl3 Javadoc'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\audio\\lwjgl\\LwjglAL.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\audio\\lwjgl\\LwjglALC.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\audio\\lwjgl\\LwjglEFX.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\input\\lwjgl\\GlfwJoystickInput.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\input\\lwjgl\\GlfwKeyInput.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\input\\lwjgl\\GlfwMouseInput.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\renderer\\lwjgl\\LwjglGL.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\renderer\\lwjgl\\LwjglGLExt.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\renderer\\lwjgl\\LwjglGLFboEXT.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\renderer\\lwjgl\\LwjglGLFboGL3.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\system\\lwjgl\\LwjglContext.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\system\\lwjgl\\LwjglDisplay.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\system\\lwjgl\\LwjglGLDebugOutputHandler.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\system\\lwjgl\\LwjglOffscreenBuffer.java'
+'C:\\Users\\matthias\\Gradle\\jmonkeyengine\\jme3-lwjgl3\\src\\main\\java\\com\\jme3\\system\\lwjgl\\LwjglWindow.java'

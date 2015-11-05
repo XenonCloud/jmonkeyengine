@@ -1,0 +1,4 @@
+com.jme3.audio.lwjgl
+com.jme3.input.lwjgl
+com.jme3.renderer.lwjgl
+com.jme3.system.lwjgl
