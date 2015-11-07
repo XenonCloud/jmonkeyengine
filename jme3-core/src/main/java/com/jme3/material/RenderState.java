@@ -191,8 +191,11 @@ public class RenderState implements Cloneable, Savable {
          * Result = (Source Color * (1 - Dest Color)) + (Dest Color * (1 - Source Color))
          *  -> (GL_ONE_MINUS_DST_COLOR, GL_ONE_MINUS_SRC_COLOR) 
          */
-        Exclusion
-    }
+        Exclusion,
+        
+        Multiply,
+        Substract
+    } 
 
     /**
      * <code>FaceCullMode</code> specifies the criteria for faces to be culled.

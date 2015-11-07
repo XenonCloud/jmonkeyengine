@@ -709,6 +709,9 @@ public final class GLRenderer implements Renderer {
                     case Additive:
                         gl.glBlendFunc(GL.GL_ONE, GL.GL_ONE);
                         break;
+                    case Substract:
+                        gl.glBlendFunc(GL.GL_ONE_MINUS_DST_COLOR, GL.GL_ONE);
+                        break;
                     case AlphaAdditive:
                         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE);
                         break;
@@ -727,9 +730,12 @@ public final class GLRenderer implements Renderer {
                     case Color:
                     case Screen:
                         gl.glBlendFunc(GL.GL_ONE, GL.GL_ONE_MINUS_SRC_COLOR);
-                        break;
+                        break; 
                     case Exclusion:
                         gl.glBlendFunc(GL.GL_ONE_MINUS_DST_COLOR, GL.GL_ONE_MINUS_SRC_COLOR);
+                        break;
+                    case Multiply:
+                        gl.glBlendFunc(GL.GL_ZERO, GL.GL_SRC_COLOR);
                         break;
                     default:
                         throw new UnsupportedOperationException("Unrecognized blend mode: "
