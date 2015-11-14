@@ -40,20 +40,41 @@ public enum LoopMode {
      * The animation will play repeatedly, when it reaches the end
      * the animation will play again from the beginning, and so on.
      */
-    Loop,
+    Loop(0),
 
     /**
      * The animation will not loop. It will play until the last frame, and then
      * freeze at that frame. It is possible to decide to play a new animation
      * when that happens by using a AnimEventListener.
      */
-    DontLoop,
+    DontLoop(1),
 
     /**
      * The animation will cycle back and forth. When reaching the end, the
      * animation will play backwards from the last frame until it reaches
      * the first frame.
      */
-    Cycle,
+    Cycle(2),;
+    
+    int idx;
+    
+    private LoopMode(int idx) {
+        this.idx = idx;
+    }
 
+    public int getIdx() {
+        return idx;
+    }
+    
+    public LoopMode getMode(int i){
+        switch(i){
+            default:
+            case 0:
+                return Loop;
+            case 1:
+                return DontLoop;
+            case 2:
+                return Cycle;
+        }
+    }
 }
