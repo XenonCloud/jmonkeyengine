@@ -22,6 +22,7 @@
 /jme3-jogg/build/
 /jme3-jbullet/build/
 /jme3-lwjgl/build/
+/jme3-lwjgl3/build/
 /jme3-networking/build/
 /jme3-niftygui/build/
 /jme3-testdata/build/
