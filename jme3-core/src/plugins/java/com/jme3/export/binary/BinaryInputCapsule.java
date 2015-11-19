@@ -43,6 +43,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -534,9 +535,7 @@ final class BinaryInputCapsule implements InputCapsule {
             return null;
         }
         ArrayList<Savable> arrayList = new ArrayList<Savable>(savables.length);
-        for (int x = 0; x < savables.length; x++) {
-            arrayList.add(savables[x]);
-        }
+        arrayList.addAll(Arrays.asList(savables));
         return arrayList;
     }
 

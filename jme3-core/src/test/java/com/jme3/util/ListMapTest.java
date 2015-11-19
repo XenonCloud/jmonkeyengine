@@ -47,7 +47,7 @@ public class ListMapTest {
         listMap.put("bob", "hello");
         assert "hello".equals(listMap.get("bob"));
         assert "hello".equals(listMap.remove("bob"));
-        assert listMap.size() == 0;
+        assert listMap.isEmpty();
         assert listMap.isEmpty();
 
         listMap.put("abc", "1");

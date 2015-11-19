@@ -203,7 +203,7 @@ public class NativeObjectManager {
         for (NativeObjectRef ref : refMapCopy) {
             deleteNativeObject(rendererObject, ref.objClone, ref, true, false);
         }
-        assert refMap.size() == 0;
+        assert refMap.isEmpty();
     }
 
     /**

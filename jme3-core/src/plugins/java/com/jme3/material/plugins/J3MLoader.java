@@ -337,10 +337,10 @@ public class J3MLoader implements AssetLoader {
         }
 
         // Parse ffbinding
-        int startParen = statement.indexOf("(");
+        int startParen = statement.indexOf('(');
         if (startParen != -1){
             // get content inside parentheses
-            int endParen = statement.indexOf(")", startParen);
+            int endParen = statement.indexOf(')', startParen);
             String bindingStr = statement.substring(startParen+1, endParen).trim();
             // don't care about bindingStr
             statement = statement.substring(0, startParen);
@@ -605,7 +605,7 @@ public class J3MLoader implements AssetLoader {
 
         String[] split = materialName.split(":", 2);
 
-        if (materialName.equals("")){
+        if (materialName.isEmpty()){
             throw new MatParseException("Material name cannot be empty", materialStat);
         }
 
@@ -752,7 +752,7 @@ public class J3MLoader implements AssetLoader {
         Wrap {
             @Override
             public void applyToTexture(final String option, final Texture texture) {
-                final int separatorPosition = option.indexOf("_");
+                final int separatorPosition = option.indexOf('_');
 
                 if (separatorPosition >= option.length() - 2) {
                     final String axis = option.substring(separatorPosition + 1);

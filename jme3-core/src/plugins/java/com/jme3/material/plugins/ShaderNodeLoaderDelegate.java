@@ -323,7 +323,7 @@ public class ShaderNodeLoaderDelegate {
                     techniqueDef.getShaderGenerationInfo().getUnusedNodes().remove(shaderNode.getName());
                 }
             } else if (line.startsWith("Condition")) {
-                String condition = line.substring(line.lastIndexOf(":") + 1).trim();
+                String condition = line.substring(line.lastIndexOf(':') + 1).trim();
                 extractCondition(condition, statement);
                 shaderNode.setCondition(conditionParser.getFormattedExpression());
             } else if (line.startsWith("InputMapping")) {

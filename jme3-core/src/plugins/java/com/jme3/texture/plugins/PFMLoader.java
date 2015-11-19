@@ -86,7 +86,7 @@ public class PFMLoader implements AssetLoader {
         }
 
         String sizeStr = readString(in);
-        int spaceIdx = sizeStr.indexOf(" ");
+        int spaceIdx = sizeStr.indexOf(' ');
         if (spaceIdx <= 0 || spaceIdx >= sizeStr.length() - 1)
             throw new IOException("Invalid size syntax in PFM file");
 

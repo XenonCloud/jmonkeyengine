@@ -36,6 +36,7 @@ import com.jme3.scene.Spatial;
 import com.jme3.util.SafeArrayList;
 import com.jme3.util.TempVars;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * The animation class updates the animation target with the tracks of a given type.
@@ -117,9 +118,7 @@ public class Animation implements Savable, Cloneable {
      * @param tracksArray The tracks to set.
      */
     public void setTracks(Track[] tracksArray) {
-        for (Track track : tracksArray) {
-            tracks.add(track);
-        }
+        tracks.addAll(Arrays.asList(tracksArray));
     }
 
     /**
